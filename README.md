@@ -1,7 +1,7 @@
 # My solution
 
 So let's get started.
-* First of all, we should define a function. I have called it 'puzzle_length'
+* First of all, we should define a function. I have called it `puzzle_length`
 
 ```
 def puzzle_length(start_word: str, end_word: str, dict_file) -> list:
@@ -61,6 +61,7 @@ and going through the loops for each char for each word
 * Also, we forgot about our dictfile and result file. I'm going to do it like this:
 
 ```
+    # utils.py
     import os
     import json
     ...
@@ -78,17 +79,24 @@ and going through the loops for each char for each word
         with open(f'{path}/result.txt', 'w+') as f:
             f.write(','.join(words))
     
-    ...
-    ...
+
+    def get_parse_args():
+        ...
+
 ```
+`Note: we using get_parse_args() to incorporate the parsing of command line arguments`
 
 > Finally, correct our function with the previous changes:
 
 ```
-import os
-import json
+# word_puzzle.py
 from collections import deque
 
+from utils import (
+    get_parse_args, 
+    steps_writter, 
+    words_reader,
+)
 
 def words_reader(filename):
     ...
@@ -126,6 +134,11 @@ def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> lis
                     queue.append((next_word, steps[:]))
 
     return 0
+```
+
+> and launch it
+```
+$ python word_puzzle.py wows rays puzzle/tests/test_data.txt .
 ```
 
 ## References

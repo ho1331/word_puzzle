@@ -1,19 +1,10 @@
-import os
-import json
 from collections import deque
 
-
-def words_reader(filename):
-    file = os.path.abspath(filename)
-    with open(file, 'r') as f:
-        data = json.loads(f.read())
-
-    return data
-
-
-def steps_writter(words, path):
-    with open(f'{path}/result.txt', 'w+') as f:
-        f.write(','.join(words))
+from utils import (
+    get_parse_args,
+    steps_writter,
+    words_reader,
+)
 
 
 def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> list:
@@ -45,3 +36,13 @@ def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> lis
                     queue.append((next_word, steps[:]))
 
     return 0
+
+if __name__ == '__main__':
+    args = get_parse_args()
+
+    start_word = args.start
+    end_word = args.end
+    dict_file = args.words
+    res_path = args.result_path
+
+    puzzle_length(start_word, end_word, dict_file, res_path)
