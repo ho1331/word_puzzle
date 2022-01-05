@@ -7,7 +7,21 @@ from utils import (
 )
 
 
-def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> list:
+def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: str) -> list:
+    """
+    This function calculates the shortest path of four-letter words
+    beginning with start_word and ending with end_word
+
+    Args:
+        start_word (str): a four letter word
+        end_word (str): a four letter word
+        dict_file (str): the file name of a text file containing four letter words
+        result_path (str): the path to some directory
+
+    Returns:
+        list: the shortest list of four letter words,
+              starting with start_word, and ending with end_word
+    """
     words = words_reader(dict_file)
 
     if end_word not in words or start_word == end_word:

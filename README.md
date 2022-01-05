@@ -1,6 +1,11 @@
 # My solution
-
-So let's get started.
+### Runtime
+* The application is written in python 3.8
+### Running a script
+```
+$ python word_puzzle.py wows rays puzzle/tests/test_data.txt .
+```
+## So let's get started.
 * First of all, we should define a function. I have called it `puzzle_length`
 
 ```
@@ -84,7 +89,7 @@ and going through the loops for each char for each word
         ...
 
 ```
-`Note: we using get_parse_args() to incorporate the parsing of command line arguments`
+`Note: we are using get_parse_args() to incorporate the parsing of command line arguments`
 
 > Finally, correct our function with the previous changes:
 
@@ -105,7 +110,7 @@ def steps_writter(words, path):
     ...
 
 
-def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> list:
+def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: str) -> list:
     words = words_reader(dict_file)
 
     if end_word not in words or start_word == end_word:
@@ -134,11 +139,6 @@ def puzzle_length(start_word: str, end_word: str, dict_file, result_path) -> lis
                     queue.append((next_word, steps[:]))
 
     return 0
-```
-
-> and launch it
-```
-$ python word_puzzle.py wows rays puzzle/tests/test_data.txt .
 ```
 
 ## References
