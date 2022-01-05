@@ -1,0 +1,6 @@
+[MESSAGES CONTROL]
+
+disable=missing-module-docstring,
+        redefined-outer-name,
+        no-else-return,
+        unspecified-encoding
