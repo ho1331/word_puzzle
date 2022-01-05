@@ -3,7 +3,7 @@
 * The application is written in python 3.8
 ### Running a script
 ```
-$ python word_puzzle.py wows rays puzzle/tests/test_data.txt .
+$ python word_puzzle.py wows rays tests/test_data.txt .
 ```
 ## So let's get started.
 * First of all, we should define a function. I have called it `puzzle_length`
