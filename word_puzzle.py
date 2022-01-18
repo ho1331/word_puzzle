@@ -1,13 +1,24 @@
+import logging
+import logging.config
+import sys
+
 from collections import deque
+from string import ascii_lowercase
+from typing import Union
 
 from utils import (
     get_parse_args,
     steps_writter,
     words_reader,
 )
+from utils import LOGGING_CONFIG
 
 
-def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: str) -> list:
+logging.config.dictConfig(LOGGING_CONFIG)
+logger = logging.getLogger(__name__)
+
+
+def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: str) -> Union[list, None]:
     """
     This function calculates the shortest path of four-letter words
     beginning with start_word and ending with end_word
@@ -22,14 +33,19 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
         list: the shortest list of four letter words,
               starting with start_word, and ending with end_word
     """
-    words = words_reader(dict_file)
+    words = set(words_reader(dict_file))
 
-    if end_word not in words or start_word == end_word:
-        return 0
+    if start_word == end_word:
+        msg = f'Equal words: "start_word"={start_word}, "end_word"={end_word}'
+        logger.info(msg)
+        sys.exit(msg)
+
+    if end_word not in words:
+        msg = f'The word "{end_word}" is not in "{dict_file}"'
+        logger.info(msg)
+        sys.exit(msg)
 
     queue = deque()
-    visited = [start_word]
-
     queue.append((start_word, []))
 
     while len(queue) > 0:
@@ -37,19 +53,22 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
         steps.append(word)
 
         for char in range(len(word)):
-            for new_char in range(ord('a'), ord('z')+1):
-                next_word = f'{word[:char]}{chr(new_char)}{word[char+1:]}'
+            for new_char in ascii_lowercase:
+                next_word = f'{word[:char]}{new_char}{word[char+1:]}'
 
                 if next_word == end_word:
                     steps.append(end_word)
                     steps_writter(steps, result_path)
                     return steps
 
-                elif next_word not in visited and next_word in words:
-                    visited.append(next_word)
+                elif next_word in words:
+                    words.remove(next_word)
                     queue.append((next_word, steps[:]))
 
-    return 0
+    msg = f'The path from "{start_word}" to "{end_word}" does not not exist'
+    logger.info(msg)
+    sys.exit(msg)
+
 
 if __name__ == '__main__':
     args = get_parse_args()
