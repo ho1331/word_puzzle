@@ -173,7 +173,7 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
     logger.info(msg)
     sys.exit(msg)
 ```
-#### I followed SOLID, YAGNI and KISS principles in solving the problem.
+#### I followed YAGNI and KISS principles in solving the problem.
 ## References
 1. https://towardsdatascience.com/search-algorithm-breadth-first-search-with-python-50571a9bb85e
 2. https://docs.python.org/3/library/logging.html
