@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from puzzle.utils import (
+from word_puzzle.utils import (
     get_parse_args,
     steps_writter,
     words_reader,
