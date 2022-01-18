@@ -5,6 +5,7 @@ import logging
 import logging.config
 
 
+LOG_FILENAME = os.path.join(os.getcwd(), "app.log")
 LOGGING_CONFIG = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -17,7 +18,7 @@ LOGGING_CONFIG = {
 
     'handlers': {
         'default': {
-            'filename': os.path.join(os.getcwd(), "app.log"),
+            'filename': LOG_FILENAME,
             'class': 'logging.FileHandler',
             'formatter': 'default_formatter',
         },
