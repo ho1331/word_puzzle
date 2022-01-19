@@ -7,7 +7,7 @@ from string import ascii_lowercase
 from typing import Union
 
 from src.utils import (
-    steps_writter,
+    steps_writer,
     words_reader,
 )
 from src.utils import LOGGING_CONFIG
@@ -57,7 +57,7 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
 
                 if next_word == end_word:
                     steps.append(end_word)
-                    steps_writter(steps, result_path)
+                    steps_writer(steps, result_path)
                     return steps
 
                 elif next_word in words:

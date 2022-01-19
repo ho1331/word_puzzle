@@ -5,7 +5,7 @@ import pytest
 
 from src.utils import (
     get_parse_args,
-    steps_writter,
+    steps_writer,
     words_reader,
 )
 from tests.conftest import (
@@ -45,7 +45,7 @@ def test_get_parse_args_fail(start_word, end_word, data, res_path):
 
 def test_steps_writer(tmpdir):
     test_words = ['test1', 'test2', 'test3']
-    steps_writter(test_words, tmpdir)
+    steps_writer(test_words, tmpdir)
 
     path = tmpdir.join('result.txt')
     with open(path, 'r') as file:
@@ -54,9 +54,9 @@ def test_steps_writer(tmpdir):
     assert words == ['test1,test2,test3']
 
 
-def test_steps_writter_fail():
+def test_steps_writer_fail():
     with pytest.raises(FileNotFoundError):
-        steps_writter(['word1', 'word2'], './result')
+        steps_writer(['word1', 'word2'], './result')
 
 
 def test_words_reader():

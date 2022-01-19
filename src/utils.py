@@ -59,7 +59,7 @@ def words_reader(filename):
     return data
 
 
-def steps_writter(words, path):
+def steps_writer(words, path):
     """
     Write data into txt file.
 
