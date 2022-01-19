@@ -6,6 +6,7 @@ import logging.config
 
 
 LOG_FILENAME = os.path.join(os.getcwd(), "app.log")
+
 LOGGING_CONFIG = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -58,7 +59,7 @@ def words_reader(filename):
     return data
 
 
-def steps_writter(words, path):
+def steps_writer(words, path):
     """
     Write data into txt file.
 

@@ -4,3 +4,6 @@ disable=missing-module-docstring,
         redefined-outer-name,
         no-else-return,
         unspecified-encoding
+
+[FORMAT]
+max-line-length=120

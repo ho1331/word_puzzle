@@ -6,12 +6,11 @@ from collections import deque
 from string import ascii_lowercase
 from typing import Union
 
-from utils import (
-    get_parse_args,
-    steps_writter,
+from src.utils import (
+    steps_writer,
     words_reader,
 )
-from utils import LOGGING_CONFIG
+from src.utils import LOGGING_CONFIG
 
 
 logging.config.dictConfig(LOGGING_CONFIG)
@@ -58,7 +57,7 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
 
                 if next_word == end_word:
                     steps.append(end_word)
-                    steps_writter(steps, result_path)
+                    steps_writer(steps, result_path)
                     return steps
 
                 elif next_word in words:
@@ -68,14 +67,3 @@ def puzzle_length(start_word: str, end_word: str, dict_file: str, result_path: s
     msg = f'The path from "{start_word}" to "{end_word}" does not not exist'
     logger.info(msg)
     sys.exit(msg)
-
-
-if __name__ == '__main__':
-    args = get_parse_args()
-
-    start_word = args.start
-    end_word = args.end
-    dict_file = args.words
-    res_path = args.result_path
-
-    puzzle_length(start_word, end_word, dict_file, res_path)
