@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from word_puzzle.word_puzzle import puzzle_length
+from src.app import puzzle_length
 from tests.conftest import (
     CLEAR_WORDS,
     DATA_PATH,
